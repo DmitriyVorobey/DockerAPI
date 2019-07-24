@@ -31,9 +31,19 @@ namespace DockerAPI.Repositories
                 Key = "item"
             });
 
-            StreamReader reader = new StreamReader(response.ResponseStream);
-            var item = JsonConvert.DeserializeObject<Item>(reader.ReadToEnd());
-            return item;
+            using (StreamReader reader = new StreamReader(response.ResponseStream))
+            {
+                try
+                {
+                    var json = reader.ReadToEnd();
+                    var item = JsonConvert.DeserializeObject<Item>(json);
+                    return item;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
         }
 
         public async Task SaveItem(Item item)
