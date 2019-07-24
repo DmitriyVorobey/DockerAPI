@@ -29,7 +29,14 @@ namespace DockerAPI
                 app.UseDeveloperExceptionPage();
             }
 
+<<<<<<< HEAD
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Hello World!123");
+            });
+=======
             app.UseMvc();
+>>>>>>> 800e59a54c472662178598826021b0bdfea8a757
         }
     }
 }
