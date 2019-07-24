@@ -1,16 +1,18 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
-WORKDIR /DockerAPI
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
+WORKDIR /app
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY DockerAPI/*.csproj ./DockerAPI/
 RUN dotnet restore
 
-# Copy everything else and build
-COPY . ./
+# copy everything else and build app
+COPY DockerAPI/. ./DockerAPI/
+WORKDIR /app/DockerAPI
 RUN dotnet publish -c Release -o out
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
-WORKDIR /DockerAPI
-COPY --from=build-env /DockerAPI/out .
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
+WORKDIR /app
+COPY --from=build /app/DockerAPI/out ./
 ENTRYPOINT ["dotnet", "DockerAPI.dll"]
