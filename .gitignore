@@ -1,3 +1,6 @@
 /DockerAPI/bin/*
 /DockerAPI/obj/*
 /.vs/*
+/DockerAPI.Tests/obj/*
+/DockerAPI.Tests/bin/*
+/DockerAPI.v3.ncrunchsolution.user

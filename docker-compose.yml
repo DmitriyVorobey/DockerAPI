@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  dockerapiservice:
+    image: dockerapiservice 
+    ports:
+      - "5001:5001"
+  
+  dockerapitests:
+    image: dockerapitests
+    build:
+      context: .
+      dockerfile: DockerAPI.Tests/Dockerfile
+    entrypoint: dotnet test
+    depends_on:
+      - dockerapiservice
+      
