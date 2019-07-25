@@ -1,10 +1,10 @@
-version: '3'
+version: '3.7'
 
 services:
   dockerapiservice:
-    image: dockerapiservice 
+    image: dockerapi
     ports:
-      - "5001:5001"
+      - "8080:8080"
   
   dockerapitests:
     image: dockerapitests
@@ -14,4 +14,7 @@ services:
     entrypoint: dotnet test
     depends_on:
       - dockerapiservice
-      
+  
+networks:
+    default:
+        driver: bridge

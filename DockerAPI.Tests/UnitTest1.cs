@@ -6,15 +6,19 @@ namespace DockerAPI.Tests
 {
     public class UnitTest1
     {
-        private const string Address = "localhost";
-        private const string Port = ":5001";
+        private const string Address = "http://localhost:8080";
+        private const string Route = "item";
 
-        [Fact]
+
+
+    [Fact]
         public async void Test1()
         {
-            var client = new HttpClient {BaseAddress = new Uri("http://" + Address + Port)};
+            var client = new HttpClient {BaseAddress = new Uri(Address+Route)};
 
-            var response = await client.GetAsync("/item");
+            Console.WriteLine(client.BaseAddress);
+
+            var response = await client.GetAsync("");
             var result = response.Content.ReadAsStringAsync().Result;
 
             Assert.Equal(result, $"item");

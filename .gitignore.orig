@@ -1,0 +1,10 @@
+/DockerAPI/bin/*
+/DockerAPI/obj/*
+/.vs/*
+<<<<<<< HEAD
+/DockerAPI.Tests/obj/*
+/DockerAPI.Tests/bin/*
+/DockerAPI.v3.ncrunchsolution.user
+=======
+/DockerAPI/out/*
+>>>>>>> 13d95953ab599739442af7f142278ea1dcc489bb
