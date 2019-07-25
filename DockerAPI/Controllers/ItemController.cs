@@ -20,9 +20,10 @@ namespace DockerAPI.Controllers
         }
 
         [HttpGet("item")]
-        public async Task<Item> GetItem()
+        public async Task<string> GetItem()
         {
-            return await _itemRepository.GetItem();
+            //return await _itemRepository.GetItem();
+            return "item";
         }
 
         [HttpPost("item")]
