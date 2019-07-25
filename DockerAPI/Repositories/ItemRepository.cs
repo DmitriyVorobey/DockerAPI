@@ -21,7 +21,7 @@ namespace DockerAPI.Repositories
         {
             var s3Client = new AmazonS3Client(new AmazonS3Config
             {
-                ServiceURL = "http://localhost:5002/",
+                ServiceURL = S3Host,
                 ForcePathStyle = true,
             });
 

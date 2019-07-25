@@ -1,10 +1,6 @@
-﻿using Amazon.S3;
-using Amazon.S3.Model;
-using Amazon.S3.Transfer;
-using DockerAPI.Models;
+﻿using DockerAPI.Models;
 using DockerAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace DockerAPI.Controllers
@@ -20,10 +16,9 @@ namespace DockerAPI.Controllers
         }
 
         [HttpGet("item")]
-        public async Task<string> GetItem()
+        public async Task<Item> GetItem()
         {
-            //return await _itemRepository.GetItem();
-            return "item";
+            return await _itemRepository.GetItem();
         }
 
         [HttpPost("item")]
