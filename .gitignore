@@ -1,3 +1,4 @@
 /DockerAPI/bin/*
 /DockerAPI/obj/*
 /.vs/*
+/DockerAPI/out/*
